@@ -413,7 +413,7 @@ turn.
 
 \begin{figure}[htb]
 \centerline{\includegraphics[width=2in]{Zaehlwerk_Schema_1.jpg}
-$\quad$\includegraphics[width=2in]{Zaehlwerk_Schema_2_clean.png}}
+$\quad$\includegraphics[width=2in]{Zaehlwerk_Schema_2_clean.jpg}}
 \caption{A 5-digit mechanical counter.}
 \end{figure}
 
@@ -631,6 +631,8 @@ For instance, consider the sequence of $N$ unions in Figure~\ref{fig: fast seque
   $\vdots$\\
     $(N-2)$ $(N-1)$\\
   \end{tabbing}
+\caption{\label{fig: fast sequence}Sequence of unions, each of which {\tt
+    WeightedQuickFind} handles in constant time.}
 \end{marginfigure}
 Each {\tt union} takes constant time, whereas the original {\tt QuickFind} data structure would have used linear time.
 This is great progress.
@@ -643,6 +645,7 @@ And the worst case running time of {\tt WeightedQuickFind} is quite bad:
 \end{quote}
 
 \begin{marginfigure}
+  \vskip 5\baselineskip
   \begin{tabbing}
     $N$\\
     {\tt 0 2}\\
@@ -654,6 +657,9 @@ And the worst case running time of {\tt WeightedQuickFind} is quite bad:
     $(N-3)$ $(N-1)$\\
     $(N-2)$ $(N-1)$\\
   \end{tabbing}
+\caption{\label{fig: slow}Sequence of unions, where the last one takes
+  linear time using {\tt
+    WeightedQuickFind}.}
 \end{marginfigure}
 To see that this is true, consider the sequence of operations in Figure~\ref{fig: slow}.
 The very last call to union, when all the odd elements are united with the even elements, leads to $\tilde N$ array accessses.
@@ -667,7 +673,8 @@ Note that while this statement is true, it is also very pessimistic.
   The \emph{best-case} time for {\tt QuickFind} was constant as well, after all: Just call {\tt union(0,1)} $N$ times in a row.
 
   Also note that `typical case' (however that should be defined) is a no-starter.
-  Almost all calls to union in our two examples take constant time, so the `typical case behaviour is constant for {WeightedQuickFind}'---but that says more about our input sequences than the data structure.
+  Almost all calls to union in our two examples take constant time, so
+  the `typical case behaviour is constant for {\tt WeightedQuickFind}'---but that says more about our input sequences than the data structure.
 
   At this time one is tempted to define `average case,' or, to be quite precise `average input sequence.'
   This can indeed be done quite rigorously, by defining a random process.
@@ -715,7 +722,7 @@ Thus, the total number of updates to {\tt id} is $\sim k\log k$.
 This finishes the proof of propostion A4.
 \bigskip
 
-Let us reiterate a few points about the formulation of proposition 4A:
+Let us reiterate a few points about the formulation of proposition~4A:
 \begin{enumerate}
   \item  Note the role that `worst case' plays:
     It says that in \emph{any}, even the most maliciously constructed input sequence, is is \emph{impossible} that the first $k$ operations take more than $O(k\log k)$ time in total.
